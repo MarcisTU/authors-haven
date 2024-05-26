@@ -22,14 +22,18 @@ services:
       - authors-api
 
   postgres:
+    container_name: postgres
+    restart: always
+    env_file:
+      - ./.envs/.local/.postgres
+    ports:
+      - "5432:5432"
     build:
       context: .
       dockerfile: ./docker/local/postgres/Dockerfile
     volumes:
       - local_postgres_data:/var/lib/postgresql/data
       - local_postgres_data_backups:/backups
-    env_file:
-      - ./.envs/.local/.postgres
     networks:
       - authors-api
 
@@ -50,4 +54,3 @@ volumes:
   media_volume:
   local_postgres_data: {}
   local_postgres_data_backups: {}
-
