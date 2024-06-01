@@ -22,7 +22,6 @@ start = time.time()
 while True:
     try:
         psycopg2.connect(
-#          dbname="${DATABASE_URL}",
           dbname="${POSTGRES_DB}",
           user="${POSTGRES_USER}",
           password="${POSTGRES_PASSWORD}",
