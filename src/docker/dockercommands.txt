@@ -1,0 +1,11 @@
+# Start docker containers
+docker compose -f local.yml up --build -d --remove-orphans
+
+# Stop docker containers
+docker compose -f local.yml down
+
+# Create postgres db backup
+docker compose -f local.yml exec postgres backup
+
+# List current postgres db  backups
+docker compose -f local.yml exec postgres backups
