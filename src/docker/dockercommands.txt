@@ -1,10 +1,10 @@
 # Build docker containers | build
 docker compose -f local.yml up --build -d --remove-orphans
 
-# Start docker containers | up
+# Stop docker containers | down
 docker compose -f local.yml down
 
-# Stop docker containers | down-v
+# Stop docker containers and volumes | down-v
 docker compose -f local.yml down -v
 
 # show-logs
