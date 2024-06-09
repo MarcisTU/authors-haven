@@ -26,15 +26,21 @@ class Profile(TimeStampedModel):
         default=Gender.OTHER,
         max_length=20,
     )
-    country = CountryField(verbose_name=_("country"), default="KE", blank=False, null=False)
-    city = models.CharField(verbose_name=_("city"), max_length=180, default="Nairobi", blank=False, null=False)
+    country = CountryField(
+        verbose_name=_("country"), default="KE", blank=False, null=False
+    )
+    city = models.CharField(
+        verbose_name=_("city"), max_length=180, default="Nairobi", blank=False, null=False
+    )
     profile_photo = models.ImageField(
         verbose_name=_("profile photo"), default="/profile_default.png"
     )
     twitter_handle = models.CharField(
         verbose_name=_("twitter handle"), max_length=20, blank=True
     )
-    followers = models.ManyToManyField("self", symmetrical=False, related_name="following", blank=True)
+    followers = models.ManyToManyField(
+        "self", symmetrical=False, related_name="following", blank=True
+    )
 
     def __str__(self):
         return f"{self.user.first_name}'s profile"
